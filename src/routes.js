@@ -14,12 +14,12 @@ import createAvailibility from "./components/createAvailibility";
 
 const router = createRouter({
     history: createWebHistory(),
-    route:[
+    routes:[
         {path: "/", component: Home},
         {path: "/Login", component: Login},
         {path: "/Employees", component: Employees},
-        {path: "/Employees/:pk", component: schedule, 
-        childeren:[{path: "schedule", component: createAvailibility}]},
+        {path: "/Employees/:pk", component: createAvailibility, 
+        childeren:[{path: "/Schedule", component: schedule}]},
        
         {path: "/signup", component: signup},
         {path: "/invalidRoute(.*)", component: notfound}
