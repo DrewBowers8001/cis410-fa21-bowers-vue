@@ -1,5 +1,5 @@
 import {createStore} from 'vuex'; 
-
+import axios from 'axios';
 export default createStore({
     state: {
         token: null,
@@ -16,9 +16,25 @@ export default createStore({
 
             state.user = theUser;
 
+        },
+        StoreEmployees(state,Employees){ 
+
+            state.Employees = Employees
         }
 
     },
-    actions:{}
+    actions:{
+        getMovies({commit}){
+            axios.get("/Employees").then((aResponse) => { 
+                console.log("response", aResponse)
+                    commit("storeEmployees", aResponse.data)
+
+            })
+
+
+
+        }
+        
+    }
 
 });

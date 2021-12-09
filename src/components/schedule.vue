@@ -3,7 +3,7 @@
       <h1> Schedule </h1>
 <hr/> 
 <h3>{{first_name}}'s Schedule </h3>
-
+<p v-if="accountError" >cannot get your account information please try again later </p>
 <table class="table">   
   <thead>
 
@@ -64,7 +64,7 @@ export default {
       console.log("here is the response", theresponse );
 
       this.reviewsbyUser = theresponse.data 
-    })
+    }).catch(()=> { this.accountError = true})
   }
 }
 </script>
