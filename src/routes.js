@@ -18,8 +18,8 @@ const router = createRouter({
         {path: "/", component: Home},
         {path: "/Login", component: Login},
         {path: "/Employees", component: Employees},
-        {path: "/Employees/:pk", component: createAvailibility, 
-        childeren:[{path: "/Schedule", component: schedule}]},
+        {path: "/schedule", component: schedule, 
+        childeren:[{path: "/Employees/:pk", component: createAvailibility}]},
        
         {path: "/signup", component: signup},
         {path: "/invalidRoute(.*)", component: notfound}
