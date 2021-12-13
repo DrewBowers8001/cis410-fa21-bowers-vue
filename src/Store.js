@@ -4,10 +4,11 @@ export default createStore({
     state: {
         token: null,
         user: null,
-        Employees: []
+        Employee: []
     }, 
     mutations: {
         storeTokenInApp(state, myToken){ 
+            
             state.token = myToken 
 
         },
@@ -17,15 +18,15 @@ export default createStore({
             state.user = theUser;
 
         },
-        StoreEmployees(state,Employees){ 
+        storeEmployees(state,Employee){ 
 
-            state.Employees = Employees
+            state.Employee = Employee
         }
 
     },
     actions:{
         getMovies({commit}){
-            axios.get("/Employees").then((aResponse) => { 
+            axios.get("/Employee").then((aResponse) => { 
                 console.log("response", aResponse)
                     commit("storeEmployees", aResponse.data)
 

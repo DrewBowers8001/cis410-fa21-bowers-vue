@@ -11,7 +11,9 @@
               <th>First Name</th>
                 <th>Last Name </th>
                   <th> Phone </th>
-                    <th> Email </th>
+                   <th> Email </th>
+                  <th> Position</th>
+                   
                     <th></th>
 
 
@@ -27,11 +29,12 @@
 
         <tbody>
           <tr v-for="aEmployee in theEmployee" :key="aEmployee.EmployeePK"> 
-                   <th>{{aEmployee.first_name}} </th>
-                    <th>{{aEmployee.last_name}} </th>
-                     <th>{{aEmployee.Phone}} </th>
+                   <th>{{aEmployee.First_Name}} </th>
+                    <th>{{aEmployee.Last_Name}} </th>
+                     <th>{{aEmployee.phone}} </th>
                       <th>{{aEmployee.Email}} </th>
-                      <th router-link :to='`/Employees/${aEmployee.EmployeePK}`'><button class="btn btn-primary"> Details<button></th>
+                      <th>{{aEmployee.position}}</th>
+                      <th> <router-link :to="`/Employee/${aEmployee.EmployeePK}`"><button class="btn btn-primary"> Details</button></router-link> </th>
 
           </tr>
 
@@ -50,12 +53,16 @@
 
 <script>
 export default {
+  
 computed: { 
   theEmployee(){ 
-    this.$store.state.Employees
+
+    console.log("eMPLOYEEpK", this.$store.state.Employee)
+   return  this.$store.state.Employee
   }
 }
 };
+
 </script>
 
 <style>

@@ -10,7 +10,7 @@
           id="fname-input"
           required=""
           placeholder="First name"
-          v-model="nameFirst"
+          v-model="first_name"
         />
       </div>
       <div class="mb-3">
@@ -21,7 +21,7 @@
           id="lname-input"
           required=""
           placeholder="Last name"
-          v-model="nameLast"
+          v-model="last_name"
         />
       </div>
       <div class="mb-3">
@@ -32,11 +32,33 @@
           id="email-input"
           required=""
           placeholder="Enter email"
-          v-model="email"
+          v-model="Email"
         />
         <small v-if="dupEmail" class="text-danger"
           >Please chose a different email</small
         >
+      </div>
+       <div class="mb-3">
+        <label for="position-input" class="form-label">Position</label
+        ><input
+          type="password"
+          class="form-control"
+          id="position-input"
+          placeholder="Position"
+          required=""
+          v-model="Position"
+        />
+      </div>
+       <div class="mb-3">
+        <label for="phone-input" class="form-label">Phone</label
+        ><input
+          type="password"
+          class="form-control"
+          id="phone-input"
+          placeholder="Phone"
+          required=""
+          v-model="phone"
+        />
       </div>
       <div class="mb-3">
         <label for="password-input" class="form-label">Password</label
@@ -62,6 +84,8 @@ export default {
      first_name: "",
      last_name: "",
      Email: "",
+     Position:"",
+     phone:"",
       password: "",
       errorMessage: "",
       dupEmail: false,
@@ -72,11 +96,13 @@ export default {
        console.log("form submiited");
       const myFormData = {
        first_name: this.first_name,
-        nameLast: this.last_name,
+        last_name: this.last_name,
         Email: this.Email,
+        Position: this.Position,
+        phone:this.phone,
         password: this.password,
       };
-      // console.log(myFormData);
+      console.log( " my form data in signup", myFormData);
       axios.post("/Employee/get", myFormData)
         .then((myResponse) => {
           console.log("the response", myResponse);

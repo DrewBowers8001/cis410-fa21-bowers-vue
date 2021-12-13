@@ -2,23 +2,23 @@
   <div>
       <h1> Schedule </h1>
 <hr/> 
-<h3>{{first_name}}'s Schedule </h3>
+<h3>{{firstname}}'s Schedule </h3>
 <p v-if="accountError" >cannot get your account information please try again later </p>
 <table class="table">   
   <thead>
 
 
-    <th> Employee PK </th>
-     <th>Time </th>
-      <th> Preffered Hours</th>
+    <th> Day </th>
+     <th> Start Time  </th>
+      <th> End Time </th>
      
     </thead> 
 
       <tbody> 
-        <tr v-for="thisReview in reviewsbyUser" :key="thisReview.ReviewPK">
-         <th><router-link :to='`/Employee/${thisReview.EmployeePK}`'></router-link></th>  
-          <th>{{thisReview.time}}</th>  
-          <th>{{thisReview.preffered_hours}}</th>  
+        <tr v-for="thisReview in reviewsbyUser" :key="thisReview.EmployeePK"> 
+          <th>{{thisReview.day}}</th>  
+          <th>{{thisReview.start_time}}</th>  
+             <th>{{thisReview.end_time}}</th> 
         
          
 
@@ -51,14 +51,16 @@ export default {
   computed: { 
     firstname(){
       console.log("state", this.$store.state)
-      return this.$store.state.user.first_name
+      console.log("user",this.$store.state.user)
+       console.log("Email",this.$store.state.user.Email)
+      return this.$store.state.user.Email
     },
   },
   created(){
-    axios.get("/Availibility/me", { 
+    axios.get("/Employee", { 
     headers: {
-      Authorization: `Bearer ${this.$store.state.token}`
-    }
+      Authorization: `Bearer ${this.$store.state.token}`,
+    },
 
     }).then((theresponse)=>{ 
       console.log("here is the response", theresponse );

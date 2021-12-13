@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import axios from "axios"
+import axios from 'axios';
 export default {
   data(){ 
 
@@ -30,12 +30,15 @@ export default {
 
       let myformdata = {
         email: this.email, 
-        password: this.password
+        password: this.password,
+    
       }
 
-      console.log(myformdata)
+      console.log("form Data" , myformdata)
       axios.post("/Employee/login", myformdata).then((response)=> {
+        console.log("here is the response",response)
         this.$store.commit("storeTokenInApp",response.data.token)
+        console.log("token",response.data.token)
 
         this.$store.commit("storeUserInApp", response.data.user)
           this.$router.replace("/Employees");
@@ -44,6 +47,7 @@ export default {
       }).catch((myError)=> { 
         console.log("error in login", myError)
       })
+      
 
     },
   },
