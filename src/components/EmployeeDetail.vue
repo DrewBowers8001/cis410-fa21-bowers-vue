@@ -14,11 +14,18 @@
 
           </div>
 
-          <router-link v-if="auth" :to="`/Employee/${this.$route.params.pk[0]}/availibility`"><button class="btn btn-success"> Add Availibiliity</button> </router-link>
-           <router-link v-else :to="`/Login`"><button class="btn btn-success">Login to Add Availibiliity</button> </router-link>
+         
           
           
           </div> 
+
+          <br />
+
+           <router-link v-if="auth" :to="`/Employee/${Employee.EmployeePK}/Availibility`"><button class="btn btn-success"> Add Availibiliity</button> </router-link>
+           <router-link v-else :to="`/Login`"><button class="btn btn-outline-success">Login to Add Availibiliity</button> </router-link>
+
+
+           <router-view />
      
 
 </div>
