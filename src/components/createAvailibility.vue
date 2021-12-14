@@ -15,13 +15,13 @@
                   required=""
                   min="1"
                   max="10"
-                  v-model="Time"
+                  v-model="time"
                 />
               </div>
               <div class="mb-3">
                 <label for="hours-input" class="form-label">Preffered Hours</label
                 ><input
-                  type="text"
+                  type="number"
                   row="3"
                   class="form-control"
                   id="hours-input"
@@ -32,7 +32,7 @@
                <div class="mb-3">
                 <label for="PK-input" class="form-label">EmployeePK</label
                 ><input
-                  type="text"
+                  type="number"
                   row="3"
                   class="form-control"
                   id="PK-input"
@@ -66,19 +66,23 @@ import axios from "axios";
 export default {
   data() {
     return {
-      time: null,
-      preffered_hours: "",
-      EmployeePK: "",
+       EmployeePK: "",
+    
+      preffered_hours: null,
+        time: null,
+     
       errorMessage: null,
     };
   },
   methods: {
     submitReview() {
       let myReview = {
-        time: this.time,
+        EmployeePk: this.EmployeePK,
         preffered_hours: this.preffered_hours,
-        EmployeePk: this.$route.params.pk
+         time: this.time,
+        
       };
+      console.log("post",myReview);
       axios
         .post("/Availibility", myReview, {
           headers: { Authorization: `Bearer ${this.$store.state.token}` },
@@ -86,7 +90,8 @@ export default {
         .then(() => {
           this.$router.replace("/");
         })
-        .catch(() => {
+        .catch((my) => {
+          console.log("error", my)
           this.errorMessage =
             "Unable to create a review, please try again later";
         });
