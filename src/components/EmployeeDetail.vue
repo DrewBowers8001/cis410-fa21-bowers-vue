@@ -21,7 +21,7 @@
 
           <br />
 
-           <router-link v-if="auth" :to="`/Employee/${aEmployee.EmployeePK}/Availibility`"><button class="btn btn-success"> Add Availibiliity</button> </router-link>
+           <router-link v-if="auth" :to="`/Employee/${Employee.EmployeePK[0]}/Availibility`"><button class="btn btn-success"> Add Availibiliity</button> </router-link>
            <router-link v-else :to="`/Login`"><button class="btn btn-outline-success">Login to Add Availibiliity</button> </router-link>
 
 
@@ -40,7 +40,7 @@ export default {
       let thisEmployee = allEmployees.find((aEmployee)=> { 
 console.log("here is AEmployee", aEmployee)
       
-        return aEmployee.EmployeePK == this.$route.params.pk;
+        return aEmployee.EmployeePK[0] == this.$route.params.pk;
       });
      
       

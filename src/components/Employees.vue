@@ -34,7 +34,7 @@
                      <th>{{aEmployee.phone}} </th>
                       <th>{{aEmployee.Email}} </th>
                       <th>{{aEmployee.position}}</th>
-                      <th> <router-link :to="`/Employee/${aEmployee.EmployeePK}`"><button class="btn btn-primary"> Details</button></router-link> </th>
+                      <th> <router-link :to="`/Employee/${aEmployee.EmployeePK[0]}`"><button class="btn btn-primary"> Details</button></router-link> </th>
 
           </tr>
 
@@ -49,7 +49,7 @@
       </table>
 
 </div>
-</template>
+</template> 
 
 <script>
 export default {
