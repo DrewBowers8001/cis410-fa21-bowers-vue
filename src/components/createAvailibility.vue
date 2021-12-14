@@ -15,7 +15,7 @@
                   required=""
                   min="1"
                   max="10"
-                  v-model="rating"
+                  v-model="Time"
                 />
               </div>
               <div class="mb-3">
@@ -26,7 +26,7 @@
                   class="form-control"
                   id="hours-input"
                   required=""
-                  v-model="summary"
+                  v-model="preffered_hours"
                 />
               </div>
                <div class="mb-3">
